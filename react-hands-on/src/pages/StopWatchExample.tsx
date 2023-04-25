@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Center } from '@chakra-ui/react'
 
 const StopwatchExample = () => {
   const [time, setTime] = useState<number>(0)
@@ -27,9 +28,11 @@ const StopwatchExample = () => {
   }
 
   return (
+    
+    <Center>
     <div>
       <div>{(time / 1000).toFixed(2)} s</div>
-      <div>
+      <div> 
         <button onClick={handleStart}>Start</button>
       </div>
       <div>
@@ -39,6 +42,7 @@ const StopwatchExample = () => {
         <button onClick={handleReset}>Reset</button>
       </div>
     </div>
+    </Center>
   )
 }
 
