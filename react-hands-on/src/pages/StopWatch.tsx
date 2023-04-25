@@ -28,12 +28,18 @@ const StopWatch = () => {
     setLaps((prevLaps) => [...prevLaps, time])
   }
 
-  const formatTime = (ms: number): string => {
-    const centiseconds = ("0" + (Math.floor(ms / 10) % 100)).slice(-2);
-    const seconds = ("0" + Math.floor(ms / 1000) % 60).slice(-2);
-    const minutes = ("0" + Math.floor(ms / (60 * 1000))).slice(-2);
-    return `${minutes}:${seconds}.${centiseconds}`;
-  }
+  const formatTime = (ms: number) => {
+    const padTime = (time: number, length: number) =>
+      time.toString().padStart(length, '0');
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const milliseconds = Math.floor(ms % 1000 / 10);
+
+    return `${padTime(minutes, 2)}:${padTime(seconds, 2)}.${padTime(
+      milliseconds,
+      2
+    )}`;
+  };
 
   return (
     <Box maxW="md" mx="auto" textAlign="center">
